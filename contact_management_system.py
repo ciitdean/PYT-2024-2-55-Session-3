@@ -45,15 +45,15 @@ def update_contact(contacts):
     if not found:
         print("Contact not found.")
 
-# Function to delete a contact
+# Function to delete a contact using 'remove'
 def delete_contact(contacts):
     name = input("Enter the name of the contact to delete: ")
-    original_length = len(contacts)
-    contacts[:] = [contact for contact in contacts if contact['Name'].lower() != name.lower()]
-    if original_length > len(contacts):
-        print(f"Contact '{name}' deleted successfully.")
-    else:
-        print("Contact not found.")
+    for contact in contacts:
+        if contact['Name'].lower() == name.lower():
+            contacts.remove(contact)
+            print(f"Contact '{name}' deleted successfully.")
+            return
+    print("Contact not found.")
 
 # Main function to run the contact management system
 def run_contact_manager():
